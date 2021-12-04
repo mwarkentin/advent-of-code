@@ -14,6 +14,7 @@ def get_least_common_bit(diagnostic_report, position):
     bit_count = Counter(bits)
     return int(bit_count.most_common(1)[0][0]) ^ 1
 
+
 def calculate_gamma_rate_binary(diagnostic_report):
     width = len(diagnostic_report[0].strip())
     full_gamma = ""
@@ -23,6 +24,7 @@ def calculate_gamma_rate_binary(diagnostic_report):
 
     return bin(int(full_gamma, 2))
 
+
 def calculate_epsilon_rate_binary(diagnostic_report):
     width = len(diagnostic_report[0].strip())
     full_epsilon = ""
@@ -31,3 +33,11 @@ def calculate_epsilon_rate_binary(diagnostic_report):
         full_epsilon += str(least_common_bit)
 
     return bin(int(full_epsilon, 2))
+
+
+def calculate_power_consumption(diagnostic_report):
+    power_consumption = int(calculate_gamma_rate_binary(diagnostic_report), 2) * int(
+        calculate_epsilon_rate_binary(diagnostic_report), 2
+    )
+    print("Power consumption:", power_consumption)
+    return power_consumption

@@ -2,7 +2,13 @@
 
 import unittest
 
-from p1 import get_most_common_bit, get_least_common_bit, calculate_gamma_rate_binary, calculate_epsilon_rate_binary
+from p1 import (
+    get_most_common_bit,
+    get_least_common_bit,
+    calculate_gamma_rate_binary,
+    calculate_epsilon_rate_binary,
+    calculate_power_consumption,
+)
 
 
 class TestProblemOne(unittest.TestCase):
@@ -49,6 +55,20 @@ class TestProblemOne(unittest.TestCase):
 
         self.assertEqual(calculate_epsilon_rate_binary(report), bin(9))
         self.assertEqual(int(calculate_epsilon_rate_binary(report), 2), 9)
+
+    def test_power_consumption(self):
+        filename = "input-sample.txt"
+        with open(filename) as f:
+            report = f.readlines()
+
+        self.assertEqual(calculate_power_consumption(report), 198)
+
+    def test_power_consumption_full(self):
+        filename = "input.txt"
+        with open(filename) as f:
+            report = f.readlines()
+
+        self.assertEqual(calculate_power_consumption(report), 3969000)
 
 
 if __name__ == "__main__":
