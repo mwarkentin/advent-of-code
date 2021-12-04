@@ -15,6 +15,7 @@ cmd_list["down"] = ["depth", 1]
 cmd_list["backward"] = ["horizontal", -1]
 cmd_list["forward"] = ["horizontal", 1]
 
+
 def parse_cmd(cmd):
     direction = cmd.split(" ")[0]
     amount = int(cmd.split(" ")[1])
