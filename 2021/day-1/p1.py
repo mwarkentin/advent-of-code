@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # Define a filename.
-filename = "input-sample.txt"
+filename = "input.txt"
 
 def count_depth_changes(depths):
     depth_counts = {}
