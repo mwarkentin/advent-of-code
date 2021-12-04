@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 
+from os import path
+
 # Define a filename.
 filename = "input.txt"
+file_path = path.abspath("input.txt")
 
 def count_depth_changes(depths):
     depth_counts = {}
