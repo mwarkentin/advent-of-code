@@ -2,7 +2,7 @@
 
 from os import path
 
-file_path = path.abspath("./input.txt")
+file_path = path.abspath("2021/day-1/input.txt")
 sliding_window_size = 3
 
 def get_sliding_window(index, depths, size=sliding_window_size):

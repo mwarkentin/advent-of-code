@@ -3,7 +3,7 @@
 from os import path
 
 # Define a filename.
-file_path = path.abspath("./input.txt")
+file_path = path.abspath("2021/day-1/input.txt")
 
 def count_depth_changes(depths):
     depth_counts = {}
