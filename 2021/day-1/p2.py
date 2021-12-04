@@ -4,10 +4,11 @@
 filename = "input.txt"
 sliding_window_size = 3
 
+
 def get_sliding_window(index, depths, size=sliding_window_size):
     if index + size > len(depths):
         raise ValueError("not enough data for sliding window")
-    return sum(depths[index:index+size])
+    return sum(depths[index : index + size])
 
 
 def count_depth_changes(depths):
@@ -18,7 +19,9 @@ def count_depth_changes(depths):
 
     for index, depth in enumerate(depths):
         try:
-            change = get_sliding_window(depths=depths, index=index+1) - get_sliding_window(depths=depths, index=index)
+            change = get_sliding_window(
+                depths=depths, index=index + 1
+            ) - get_sliding_window(depths=depths, index=index)
         except ValueError:
             break
 
@@ -33,6 +36,7 @@ def count_depth_changes(depths):
             depth_counts["no_change"] += 1
 
     return depth_counts
+
 
 # Open the file as f.
 # The function readlines() reads the file.

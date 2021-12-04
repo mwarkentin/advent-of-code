@@ -3,6 +3,7 @@
 # Define a filename.
 filename = "input.txt"
 
+
 def count_depth_changes(depths):
     depth_counts = {}
     depth_counts["increased"] = 0
@@ -13,7 +14,7 @@ def count_depth_changes(depths):
         if index == 0:
             continue
 
-        change = int(depth) - int(depths[index-1])
+        change = int(depth) - int(depths[index - 1])
         if change > 0:
             print(depth, "increased")
             depth_counts["increased"] += 1
@@ -25,6 +26,7 @@ def count_depth_changes(depths):
             depth_counts["no_change"] += 1
 
     return depth_counts
+
 
 # Open the file as f.
 # The function readlines() reads the file.
