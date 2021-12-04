@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # Define a filename.
-filename = "input-sample.txt"
+filename = "input.txt"
 sliding_window_size = 3
 
 def get_sliding_window(index, depths, size=sliding_window_size):
