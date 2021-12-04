@@ -2,7 +2,7 @@
 
 import unittest
 
-from p1 import get_most_common_bit, get_least_common_bit, calculate_gamma_rate_binary
+from p1 import get_most_common_bit, get_least_common_bit, calculate_gamma_rate_binary, calculate_epsilon_rate_binary
 
 
 class TestProblemOne(unittest.TestCase):
@@ -33,6 +33,22 @@ class TestProblemOne(unittest.TestCase):
         self.assertEqual(get_least_common_bit(diagnostic_report=report, position=2), 0)
         self.assertEqual(get_least_common_bit(diagnostic_report=report, position=3), 0)
         self.assertEqual(get_least_common_bit(diagnostic_report=report, position=4), 1)
+
+    def test_calculate_gamma_rate(self):
+        filename = "input-sample.txt"
+        with open(filename) as f:
+            report = f.readlines()
+
+        self.assertEqual(calculate_gamma_rate_binary(report), bin(22))
+        self.assertEqual(int(calculate_gamma_rate_binary(report), 2), 22)
+
+    def test_calculate_epsilon_rate(self):
+        filename = "input-sample.txt"
+        with open(filename) as f:
+            report = f.readlines()
+
+        self.assertEqual(calculate_epsilon_rate_binary(report), bin(9))
+        self.assertEqual(int(calculate_epsilon_rate_binary(report), 2), 9)
 
 
 if __name__ == "__main__":
