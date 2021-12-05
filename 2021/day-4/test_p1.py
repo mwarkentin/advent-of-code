@@ -5,6 +5,7 @@ import unittest
 from p1 import (
     parse_input,
     check_board_for_match,
+    play_bingo,
 )
 
 
@@ -118,6 +119,17 @@ class TestProblemOne(unittest.TestCase):
         ]
 
         self.assertIsNone(check_board_for_match(board=board, item="99"))
+
+    def test_play_bingo(self):
+        """
+        Lets play some bingo!
+        """
+
+        filename = "input-sample.txt"
+        with open(filename) as f:
+            input = f.readlines()
+
+        play_bingo(input=input)
 
 
 if __name__ == "__main__":

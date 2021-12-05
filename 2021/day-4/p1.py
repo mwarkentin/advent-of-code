@@ -25,5 +25,16 @@ def parse_input(input):
 def check_board_for_match(board, item):
     for row, board_row in enumerate(board):
         for col, value in enumerate(board_row):
-            if value == item:
+            if int(value) == item:
                 return (row, col)
+
+def play_bingo(input):
+    print("Time to play some.... BINGO!")
+    draws, boards = parse_input(input)
+
+    for draw in draws:
+        print(f"Ball drawn: {draw}")
+        for count, board in enumerate(boards):
+            match = check_board_for_match(board=board, item=draw)
+            if match is not None:
+                print(f"Match on {draw} found for board {count} at {match[0]},{match[1]}")
