@@ -8,6 +8,7 @@ from p2 import (
     filter_report,
     get_oxygen_generator_rating,
     get_co2_scrubber_rating,
+    get_life_support_rating,
 )
 
 
@@ -84,6 +85,20 @@ class TestProblemOne(unittest.TestCase):
             report = f.readlines()
 
         self.assertEqual(get_co2_scrubber_rating(report, 0), "01010")
+
+    def test_get_life_support_rating_sample(self):
+        filename = "input-sample.txt"
+        with open(filename) as f:
+            report = f.readlines()
+
+        self.assertEqual(get_life_support_rating(report), 230)
+
+    def test_get_life_support_rating_full(self):
+        filename = "input.txt"
+        with open(filename) as f:
+            report = f.readlines()
+
+        self.assertEqual(get_life_support_rating(report), 4267809)
 
 
 if __name__ == "__main__":

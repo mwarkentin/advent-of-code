@@ -29,11 +29,15 @@ def get_oxygen_generator_rating(report, position):
 
 def get_co2_scrubber_rating(report, position):
     lcb = get_least_common_bit(report, position)
-    print(lcb)
     filtered_report = filter_report(report, str(lcb), position)
-    print(filtered_report)
 
     if len(filtered_report) == 1:
         return filtered_report[0]
     else:
         return get_co2_scrubber_rating(filtered_report, position + 1)
+
+def get_life_support_rating(report):
+    oxygen_rating = int(get_oxygen_generator_rating(report, 0), 2)
+    co2_rating = int(get_co2_scrubber_rating(report, 0), 2)
+
+    return oxygen_rating * co2_rating
