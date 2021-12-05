@@ -4,6 +4,7 @@ import unittest
 
 from p1 import (
     parse_input,
+    check_board_for_match,
 )
 
 
@@ -73,6 +74,35 @@ class TestProblemOne(unittest.TestCase):
 
         self.assertEqual(parsed_input[0], expected_draws)
         self.assertEqual(parsed_input[1], expected_boards)
+
+    def test_check_board_for_match_with_match(self):
+        """
+        Test input parsing to get draws and boards
+        """
+
+        board = [
+            ["22", "13", "17", "11", "0"],
+            ["8", "2", "23", "4", "24"],
+            ["21", "9", "14", "16", "7"],
+            ["6", "10", "3", "18", "5"],
+            ["1", "12", "20", "15", "19"],
+        ]
+
+        self.assertEqual(
+            check_board_for_match(board=board, item="23"),
+            (
+                1,
+                2,
+            ),
+        )
+
+        self.assertEqual(
+            check_board_for_match(board=board, item="5"),
+            (
+                3,
+                4,
+            ),
+        )
 
 
 if __name__ == "__main__":
