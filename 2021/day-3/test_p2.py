@@ -7,6 +7,7 @@ from p2 import (
     get_least_common_bit,
     filter_report,
     get_oxygen_generator_rating,
+    get_co2_scrubber_rating,
 )
 
 
@@ -76,6 +77,13 @@ class TestProblemOne(unittest.TestCase):
             report = f.readlines()
 
         self.assertEqual(get_oxygen_generator_rating(report, 0), "10111")
+
+    def test_get_co2_scrubber_rating(self):
+        filename = "input-sample.txt"
+        with open(filename) as f:
+            report = f.readlines()
+
+        self.assertEqual(get_co2_scrubber_rating(report, 0), "01010")
 
 
 if __name__ == "__main__":
