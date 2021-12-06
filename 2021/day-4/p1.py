@@ -14,6 +14,7 @@ def parse_input(input):
         start_row = 2 + 6 * i
         end_row = start_row + 5
         board = [row.strip().split() for row in input[start_row:end_row]]
+        board = [[int(item) for item in row] for row in board]
         boards.append(board)
 
     print("boards:")
@@ -28,6 +29,24 @@ def check_board_for_match(board, item):
             if int(value) == item:
                 return (row, col)
 
+def check_winner(board):
+    # Check for full row
+    for row in board:
+        print(row)
+        if not any(row):
+            print("Found a FULL ROW!", row)
+            return True
+
+    # Check for full column
+    for x in range(5):
+        col = [row[x] for row in board]
+        print(col)
+        if not any(col):
+            print("Found a FULL COLUMN!", col)
+            return True
+
+    return False
+
 def play_bingo(input):
     print("Time to play some.... BINGO!")
     draws, boards = parse_input(input)
@@ -38,3 +57,10 @@ def play_bingo(input):
             match = check_board_for_match(board=board, item=draw)
             if match is not None:
                 print(f"Match on {draw} found for board {count} at {match[0]},{match[1]}")
+                # Set position to 0 to track matches since we only care about unmatched positions
+                board[match[0]][match[1]] = 0
+                winner = check_winner(board=board)
+                if winner:
+                    print(f"Winner found, board {count}:")
+                    pprint(board)
+                    return
