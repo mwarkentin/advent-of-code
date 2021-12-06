@@ -47,10 +47,7 @@ def check_winner(board):
 
     return False
 
-def play_bingo(input):
-    print("Time to play some.... BINGO!")
-    draws, boards = parse_input(input)
-
+def draw_balls(draws, boards):
     for draw in draws:
         print(f"Ball drawn: {draw}")
         for count, board in enumerate(boards):
@@ -63,4 +60,21 @@ def play_bingo(input):
                 if winner:
                     print(f"Winner found, board {count}:")
                     pprint(board)
-                    return
+                    return board, draw
+    return None, None
+
+def sum_board(board):
+    return sum(sum(board, []))
+
+def play_bingo(input):
+    print("Time to play some.... BINGO!")
+    draws, boards = parse_input(input)
+
+    winning_board, winning_draw = draw_balls(draws=draws, boards=boards)
+    if winning_board is not None:
+        board_sum = sum_board(board=winning_board)
+        final_score = board_sum * winning_draw
+        print(f"FINAL SCORE is..... {final_score}")
+    else:
+        exit("No winner found...")
+
