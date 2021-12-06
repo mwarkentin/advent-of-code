@@ -29,6 +29,7 @@ def check_board_for_match(board, item):
             if int(value) == item:
                 return (row, col)
 
+
 def check_winner(board):
     # Check for full row
     for row in board:
@@ -47,13 +48,16 @@ def check_winner(board):
 
     return False
 
+
 def draw_balls(draws, boards):
     for draw in draws:
         print(f"Ball drawn: {draw}")
         for count, board in enumerate(boards):
             match = check_board_for_match(board=board, item=draw)
             if match is not None:
-                print(f"Match on {draw} found for board {count} at {match[0]},{match[1]}")
+                print(
+                    f"Match on {draw} found for board {count} at {match[0]},{match[1]}"
+                )
                 # Set position to 0 to track matches since we only care about unmatched positions
                 board[match[0]][match[1]] = 0
                 winner = check_winner(board=board)
@@ -63,8 +67,10 @@ def draw_balls(draws, boards):
                     return board, draw
     return None, None
 
+
 def sum_board(board):
     return sum(sum(board, []))
+
 
 def play_bingo(input):
     print("Time to play some.... BINGO!")
@@ -77,4 +83,3 @@ def play_bingo(input):
         print(f"FINAL SCORE is..... {final_score}")
     else:
         exit("No winner found...")
-

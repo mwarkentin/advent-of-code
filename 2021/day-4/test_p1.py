@@ -177,7 +177,16 @@ class TestProblemOne(unittest.TestCase):
 
         play_bingo(input=input)
 
+    def test_play_bingo_full(self):
+        """
+        Lets play some bingo!
+        """
 
+        filename = "input.txt"
+        with open(filename) as f:
+            input = f.readlines()
+
+        play_bingo(input=input)
 
 
 if __name__ == "__main__":
