@@ -5,7 +5,16 @@ from pprint import pprint
 
 def parse_input(input):
     fish = [int(x) for x in input[0].split(",")]
-    return fish
+    fish_buckets = {}
+
+    for f in range(9):
+        fish_buckets[f] = 0
+
+    for f in fish:
+        fish_buckets[f] += 1
+
+    print(f"{fish}, {fish_buckets}")
+    return fish_buckets
 
 
 def next_day(fish):

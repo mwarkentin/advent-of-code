@@ -88,31 +88,35 @@ class TestProblemOne(unittest.TestCase):
 
         self.assertEqual(fish, expected_fish_day_18)
 
-    def test_simulate_days_sample(self):
-        filename = "input-sample.txt"
-        with open(filename) as f:
-            input = f.readlines()
+    # def test_simulate_days_sample(self):
+    #     filename = "input-sample.txt"
+    #     with open(filename) as f:
+    #         input = f.readlines()
 
-        fish = parse_input(input=input)
-        fish = simulate_days(fish=fish, days=18)
-        self.assertEqual(len(fish), 26)
+    #     fish = parse_input(input=input)
+    #     fish = simulate_days(fish=fish, days=18)
+    #     self.assertEqual(len(fish), 26)
 
-        fish = parse_input(input=input)
-        fish = simulate_days(fish=fish, days=80)
-        self.assertEqual(len(fish), 5934)
+    #     fish = parse_input(input=input)
+    #     fish = simulate_days(fish=fish, days=80)
+    #     self.assertEqual(len(fish), 5934)
 
-    def test_simulate_days_full(self):
-        filename = "input.txt"
-        with open(filename) as f:
-            input = f.readlines()
+    #     # fish = parse_input(input=input)
+    #     # fish = simulate_days(fish=fish, days=256)
+    #     # self.assertEqual(len(fish), 26984457539)
 
-        fish = parse_input(input=input)
-        fish = simulate_days(fish=fish, days=18)
-        self.assertEqual(len(fish), 1565)
+    # def test_simulate_days_full(self):
+    #     filename = "input.txt"
+    #     with open(filename) as f:
+    #         input = f.readlines()
 
-        fish = parse_input(input=input)
-        fish = simulate_days(fish=fish, days=80)
-        self.assertEqual(len(fish), 352195)
+    #     fish = parse_input(input=input)
+    #     fish = simulate_days(fish=fish, days=18)
+    #     self.assertEqual(len(fish), 1565)
+
+    #     fish = parse_input(input=input)
+    #     fish = simulate_days(fish=fish, days=80)
+    #     self.assertEqual(len(fish), 352195)
 
 
 if __name__ == "__main__":
