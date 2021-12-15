@@ -79,18 +79,22 @@ class TestProblemOne(unittest.TestCase):
         fish_buckets = simulate_days(fish_buckets=fish_buckets, days=256)
         self.assertEqual(count_fish(fish_buckets), 26984457539)
 
-    # def test_simulate_days_full(self):
-    #     filename = "input.txt"
-    #     with open(filename) as f:
-    #         input = f.readlines()
+    def test_simulate_days_full(self):
+        filename = "input.txt"
+        with open(filename) as f:
+            input = f.readlines()
 
-    #     fish = parse_input(input=input)
-    #     fish = simulate_days(fish=fish, days=18)
-    #     self.assertEqual(len(fish), 1565)
+        fish_buckets = parse_input(input=input)
+        fish_buckets = simulate_days(fish_buckets=fish_buckets, days=18)
+        self.assertEqual(count_fish(fish_buckets), 1565)
 
-    #     fish = parse_input(input=input)
-    #     fish = simulate_days(fish=fish, days=80)
-    #     self.assertEqual(len(fish), 352195)
+        fish_buckets = parse_input(input=input)
+        fish_buckets = simulate_days(fish_buckets=fish_buckets, days=80)
+        self.assertEqual(count_fish(fish_buckets), 352195)
+
+        fish_buckets = parse_input(input=input)
+        fish_buckets = simulate_days(fish_buckets=fish_buckets, days=256)
+        self.assertEqual(count_fish(fish_buckets), 1600306001288)
 
 
 if __name__ == "__main__":
