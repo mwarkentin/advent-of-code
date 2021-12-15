@@ -17,22 +17,32 @@ def parse_input(input):
     return fish_buckets
 
 
-def next_day(fish):
-    new_fish = 0
-    for i, f in enumerate(fish):
-        if f == 0:
-            new_fish += 1
-            fish[i] = 6
-        else:
-            fish[i] -= 1
+def next_day(fish_buckets):
+    new_fish_buckets = {}
+    for f in range(9):
+        try:
+            new_fish_buckets[f] = fish_buckets[f + 1]
+        except KeyError:
+            # Generate X new fish with counter = 8
+            new_fish_buckets[f] = fish_buckets[0]
 
-    fish = fish + [8 for x in range(new_fish)]
-    return fish
+    # Reset 0 fish to 6
+    # Have to add since 7 fish also become 6...
+    new_fish_buckets[6] += fish_buckets[0]
+
+    return new_fish_buckets
 
 
-def simulate_days(fish, days):
+def simulate_days(fish_buckets, days):
     for day in range(days):
-        fish = next_day(fish)
-        print(f"{day=}, fish={len(fish)}")
+        fish_buckets = next_day(fish_buckets)
+        print(f"{day=}, {fish_buckets=}")
 
-    return fish
+    return fish_buckets
+
+
+def count_fish(fish_buckets):
+    fish_values = fish_buckets.values()
+    total_fish = sum(fish_values)
+    print(f"{total_fish=}")
+    return total_fish

@@ -6,6 +6,7 @@ from p1 import (
     parse_input,
     next_day,
     simulate_days,
+    count_fish,
 )
 
 
@@ -18,92 +19,65 @@ class TestProblemOne(unittest.TestCase):
         with open(filename) as f:
             input = f.readlines()
 
-        expected_fish = [3, 4, 3, 1, 2]
-
-        parsed_input = parse_input(input=input)
-
-        self.assertEqual(parsed_input, expected_fish)
+        expected_buckets = {0: 0, 1: 1, 2: 1, 3: 2, 4: 1, 5: 0, 6: 0, 7: 0, 8: 0}
+        fish_buckets = parse_input(input=input)
+        self.assertEqual(fish_buckets, expected_buckets)
 
     def test_next_day(self):
-        fish = [3, 4, 3, 1, 2]
+        fish_buckets = {0: 0, 1: 1, 2: 1, 3: 2, 4: 1, 5: 0, 6: 0, 7: 0, 8: 0}
 
-        expected_fish_day_1 = [2, 3, 2, 0, 1]
-        fish = next_day(fish)
+        expected_buckets_day_1 = {0: 1, 1: 1, 2: 2, 3: 1, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0}
+        fish_buckets = next_day(fish_buckets)
+        self.assertEqual(fish_buckets, expected_buckets_day_1)
 
-        self.assertEqual(fish, expected_fish_day_1)
+        expected_buckets_day_2 = {0: 1, 1: 2, 2: 1, 3: 0, 4: 0, 5: 0, 6: 1, 7: 0, 8: 1}
+        fish_buckets = next_day(fish_buckets)
+        self.assertEqual(fish_buckets, expected_buckets_day_2)
 
-        expected_fish_day_2 = [1, 2, 1, 6, 0, 8]
-        fish = next_day(fish)
+        expected_buckets_day_7 = {0: 0, 1: 1, 2: 1, 3: 3, 4: 2, 5: 2, 6: 1, 7: 0, 8: 0}
+        fish_buckets = next_day(fish_buckets)
+        fish_buckets = next_day(fish_buckets)
+        fish_buckets = next_day(fish_buckets)
+        fish_buckets = next_day(fish_buckets)
+        fish_buckets = next_day(fish_buckets)
+        self.assertEqual(fish_buckets, expected_buckets_day_7)
 
-        self.assertEqual(fish, expected_fish_day_2)
-
-        expected_fish_day_7 = [3, 4, 3, 1, 2, 3, 4, 5, 5, 6]
-        fish = next_day(fish)
-        fish = next_day(fish)
-        fish = next_day(fish)
-        fish = next_day(fish)
-        fish = next_day(fish)
-
-        self.assertEqual(fish, expected_fish_day_7)
-
-        expected_fish_day_18 = [
-            6,
-            0,
-            6,
-            4,
+    def test_count_fish(self):
+        self.assertEqual(
+            count_fish(
+                fish_buckets={0: 0, 1: 1, 2: 1, 3: 2, 4: 1, 5: 0, 6: 0, 7: 0, 8: 0}
+            ),
             5,
+        )
+        self.assertEqual(
+            count_fish(
+                fish_buckets={0: 1, 1: 2, 2: 1, 3: 0, 4: 0, 5: 0, 6: 1, 7: 0, 8: 1}
+            ),
             6,
-            0,
-            1,
-            1,
-            2,
-            6,
-            0,
-            1,
-            1,
-            1,
-            2,
-            2,
-            3,
-            3,
-            4,
-            6,
-            7,
-            8,
-            8,
-            8,
-            8,
-        ]
-        fish = next_day(fish)
-        fish = next_day(fish)
-        fish = next_day(fish)
-        fish = next_day(fish)
-        fish = next_day(fish)
-        fish = next_day(fish)
-        fish = next_day(fish)
-        fish = next_day(fish)
-        fish = next_day(fish)
-        fish = next_day(fish)
-        fish = next_day(fish)
+        )
+        self.assertEqual(
+            count_fish(
+                fish_buckets={0: 0, 1: 1, 2: 1, 3: 3, 4: 2, 5: 2, 6: 1, 7: 0, 8: 0}
+            ),
+            10,
+        )
 
-        self.assertEqual(fish, expected_fish_day_18)
+    def test_simulate_days_sample(self):
+        filename = "input-sample.txt"
+        with open(filename) as f:
+            input = f.readlines()
 
-    # def test_simulate_days_sample(self):
-    #     filename = "input-sample.txt"
-    #     with open(filename) as f:
-    #         input = f.readlines()
+        fish_buckets = parse_input(input=input)
+        fish_buckets = simulate_days(fish_buckets=fish_buckets, days=18)
+        self.assertEqual(count_fish(fish_buckets), 26)
 
-    #     fish = parse_input(input=input)
-    #     fish = simulate_days(fish=fish, days=18)
-    #     self.assertEqual(len(fish), 26)
+        fish_buckets = parse_input(input=input)
+        fish_buckets = simulate_days(fish_buckets=fish_buckets, days=80)
+        self.assertEqual(count_fish(fish_buckets), 5934)
 
-    #     fish = parse_input(input=input)
-    #     fish = simulate_days(fish=fish, days=80)
-    #     self.assertEqual(len(fish), 5934)
-
-    #     # fish = parse_input(input=input)
-    #     # fish = simulate_days(fish=fish, days=256)
-    #     # self.assertEqual(len(fish), 26984457539)
+        fish_buckets = parse_input(input=input)
+        fish_buckets = simulate_days(fish_buckets=fish_buckets, days=256)
+        self.assertEqual(count_fish(fish_buckets), 26984457539)
 
     # def test_simulate_days_full(self):
     #     filename = "input.txt"
