@@ -14,3 +14,14 @@ def parse_input(input):
         crab_buckets[crab] += 1
 
     return crab_buckets
+
+def calc_fuel_to_position(crabs, position):
+    fuel_cost = 0
+    print(f"{crabs=}")
+    for x, num in crabs.items():
+        x_diff = abs(x - position)
+        print(f"{x=}, {num=}, {x_diff=}")
+        fuel_cost += x_diff * num
+        print(f"{fuel_cost=}")
+
+    return fuel_cost
