@@ -2,7 +2,7 @@
 
 import unittest
 
-from p1 import (
+from p2 import (
     parse_input,
     calc_fuel_to_position,
     find_lowest_fuel_cost,
@@ -43,10 +43,8 @@ class TestProblemOne(unittest.TestCase):
             input = f.readlines()
 
         crab_buckets, _ = parse_input(input=input)
-        self.assertEqual(calc_fuel_to_position(crabs=crab_buckets, position=2), 37)
-        self.assertEqual(calc_fuel_to_position(crabs=crab_buckets, position=1), 41)
-        self.assertEqual(calc_fuel_to_position(crabs=crab_buckets, position=3), 39)
-        self.assertEqual(calc_fuel_to_position(crabs=crab_buckets, position=10), 71)
+        self.assertEqual(calc_fuel_to_position(crabs=crab_buckets, position=2), 206)
+        self.assertEqual(calc_fuel_to_position(crabs=crab_buckets, position=5), 168)
 
     def test_find_lowest_fuel_cost_sample(self):
         filename = "input-sample.txt"
@@ -54,7 +52,7 @@ class TestProblemOne(unittest.TestCase):
             input = f.readlines()
 
         crab_buckets, max_x = parse_input(input=input)
-        self.assertEqual(find_lowest_fuel_cost(crabs=crab_buckets, max_x=max_x), 37)
+        self.assertEqual(find_lowest_fuel_cost(crabs=crab_buckets, max_x=max_x), 168)
 
     def test_find_lowest_fuel_cost_full(self):
         filename = "input.txt"
@@ -62,7 +60,9 @@ class TestProblemOne(unittest.TestCase):
             input = f.readlines()
 
         crab_buckets, max_x = parse_input(input=input)
-        self.assertEqual(find_lowest_fuel_cost(crabs=crab_buckets, max_x=max_x), 336040)
+        self.assertEqual(
+            find_lowest_fuel_cost(crabs=crab_buckets, max_x=max_x), 94813675
+        )
 
 
 if __name__ == "__main__":

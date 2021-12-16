@@ -20,7 +20,7 @@ def parse_input(input):
 def calc_fuel_to_position(crabs, position):
     fuel_cost = 0
     for x, num in crabs.items():
-        x_diff = abs(x - position)
+        x_diff = sum(range(1, abs(x - position) + 1))
         fuel_cost += x_diff * num
 
     return fuel_cost
