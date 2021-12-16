@@ -16,6 +16,7 @@ def parse_input(input):
 
     return crab_buckets, max_x
 
+
 def calc_fuel_to_position(crabs, position):
     fuel_cost = 0
     for x, num in crabs.items():
@@ -23,6 +24,7 @@ def calc_fuel_to_position(crabs, position):
         fuel_cost += x_diff * num
 
     return fuel_cost
+
 
 def find_lowest_fuel_cost(crabs, max_x):
     fuel_costs = []
