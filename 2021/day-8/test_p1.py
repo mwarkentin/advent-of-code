@@ -4,13 +4,13 @@ import unittest
 
 from p1 import (
     parse_input,
+    count_easy_digits,
 )
 
 
 class TestProblemOne(unittest.TestCase):
     def test_parse_intput(self):
         """
-        Test input parsing to get draws and boards
         """
         filename = "input-sample.txt"
         with open(filename) as f:
@@ -62,6 +62,32 @@ class TestProblemOne(unittest.TestCase):
         parsed_input = parse_input(input=input)
 
         self.assertEqual(parsed_input, expected_notes)
+
+    def test_count_easy_digits(self):
+        """
+        """
+        filename = "input-sample.txt"
+        with open(filename) as f:
+            input = f.readlines()
+
+        notes = parse_input(input)
+
+        easy_digit_count = count_easy_digits(notes=notes)
+
+        self.assertEqual(easy_digit_count, 26)
+
+    def test_count_easy_digits_full(self):
+        """
+        """
+        filename = "input.txt"
+        with open(filename) as f:
+            input = f.readlines()
+
+        notes = parse_input(input)
+
+        easy_digit_count = count_easy_digits(notes=notes)
+
+        self.assertEqual(easy_digit_count, 383)
 
 
 if __name__ == "__main__":
