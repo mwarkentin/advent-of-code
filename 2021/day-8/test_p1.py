@@ -5,6 +5,7 @@ import unittest
 from p1 import (
     parse_input,
     count_easy_digits,
+    decode_note,
 )
 
 
@@ -88,6 +89,15 @@ class TestProblemOne(unittest.TestCase):
         easy_digit_count = count_easy_digits(notes=notes)
 
         self.assertEqual(easy_digit_count, 383)
+
+    def test_decode_note(self):
+        filename = "input-1l.txt"
+        with open(filename) as f:
+            input = f.readlines()
+
+        notes = parse_input(input)
+
+        mapping = decode_note(notes)
 
 
 if __name__ == "__main__":

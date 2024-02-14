@@ -22,3 +22,42 @@ def count_easy_digits(notes):
 
     return easy_digits
 
+def decode_note(notes):
+    mapping_to_combo = {}
+    mapping_to_digit = {}
+    for note in notes:
+        for d in note[0].split(" "):
+            digit = "".join(sorted(d))
+            print(digit, len(digit))
+            if len(digit) == 2:
+                mapping_to_combo[1] = digit
+                mapping_to_digit[digit] = 1
+
+            if len(digit) == 3:
+                mapping_to_combo[7] = digit
+                mapping_to_digit[digit] = 7
+
+            if len(digit) == 4:
+                mapping_to_combo[4] = digit
+                mapping_to_digit[digit] = 4
+
+            if len(digit) == 7:
+                mapping_to_combo[8] = digit
+                mapping_to_digit[digit] = 8
+
+    print(mapping_to_combo)
+    print(mapping_to_digit)
+    # for digit in note[0].split(" "):
+    #     print(digit)
+
+    # if len(digit) == 2:
+    #     return 1
+
+    # if len(digit) == 3:
+    #     return 7
+
+    # if len(digit) == 4:
+    #     return 4
+
+    # if len(digit) == 7:
+    #     return 8
