@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
+from os import path
+
 # Define a filename.
-filename = "input.txt"
+file_path = path.abspath("2021/day-1/input.txt")
 
 
 def count_depth_changes(depths):
@@ -30,7 +32,7 @@ def count_depth_changes(depths):
 
 # Open the file as f.
 # The function readlines() reads the file.
-with open(filename) as f:
+with open(file_path) as f:
     depths = f.readlines()
 
 depth_counts = count_depth_changes(depths)

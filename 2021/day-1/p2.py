@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
-# Define a filename.
-filename = "input.txt"
+from os import path
+
+file_path = path.abspath("2021/day-1/input.txt")
 sliding_window_size = 3
 
 
@@ -40,7 +41,7 @@ def count_depth_changes(depths):
 
 # Open the file as f.
 # The function readlines() reads the file.
-with open(filename) as f:
+with open(file_path) as f:
     depths = [int(d) for d in f.readlines()]
 
 depth_counts = count_depth_changes(depths)
